@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deployment:
     runs-on: ubuntu-latest
-
+    environment: Terraform
     steps:
       - uses: actions/checkout@v3
 
