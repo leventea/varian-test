@@ -15,8 +15,13 @@ jobs:
 
       - uses: hashicorp/setup-terraform@v2.0.3 
 
+      - uses: actions/cache@v4
+        with:
+          path: terraform.tfstate
+          key: terraform-state
+
       - run: terraform init
-      
+
       - run: terraform apply -auto-approve
         env: 
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
