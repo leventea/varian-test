@@ -1,0 +1,23 @@
+name: Deploy to GCP
+
+on:
+  push:
+    branches: [ "master" ]
+    
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: hashicorp/setup-terraform@v2.0.3 
+
+      # TODO: pass credentials to terraform from secrets
+      - run: terraform init
+      
+      - run: terraform apply
+        env: 
+          GOOGLE_CREDENTIALS: ${{ secret.GOOGLE_CREDENTIALS }}
