@@ -21,8 +21,8 @@ provider "google" {
 # very basic VM
 data "google_compute_image" "freebsd-img" {
   # gcloud compute images list --project freebsd-org-cloud-dev --no-standard-images
-  family  = "freebsd-14-0"
-  project = "freebsd-org-cloud-dev"
+  family  = "debian-12"
+  project = "debian-cloud"
 }
 
 resource "google_compute_instance" "varian-test" {
